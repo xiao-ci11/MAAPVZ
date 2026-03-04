@@ -138,6 +138,82 @@
                     }
                 },
                 {
+                    "name": "应用宝",
+                    "option": [
+                        "登录方式"
+                    ]
+                },
+                {
+                    "name": "b服",
+                    "pipeline_override": {
+                        "选择渠道服": {
+                            "next": [
+                                "打开pvz_b服"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "荣耀",
+                    "pipeline_override": {
+                        "选择渠道服": {
+                            "next": [
+                                "打开pvz_荣耀"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "vivo",
+                    "pipeline_override": {
+                        "选择渠道服": {
+                            "next": [
+                                "打开pvz_vivo"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "九游",
+                    "pipeline_override": {
+                        "选择渠道服": {
+                            "next": [
+                                "打开pvz_九游"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "OPPO",
+                    "pipeline_override": {
+                        "选择渠道服": {
+                            "next": [
+                                "打开pvz_OPPO"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "好游快报",
+                    "pipeline_override": {
+                        "选择渠道服": {
+                            "next": [
+                                "打开pvz_好游快报"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "百度",
+                    "pipeline_override": {
+                        "选择渠道服": {
+                            "next": [
+                                "打开pvz_百度"
+                            ]
+                        }
+                    }
+                },
+                {
                     "name": "360",
                     "pipeline_override": {
                         "选择渠道服": {
@@ -173,6 +249,31 @@
                         "选择渠道服": {
                             "next": [
                                 "打开pvz_官服"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "登录方式": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "qq登录",
+                    "pipeline_override": {
+                        "选择渠道服": {
+                            "next": [
+                                "打开pvz_应用宝_qq"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "微信登录",
+                    "pipeline_override": {
+                        "选择渠道服": {
+                            "next": [
+                                "打开pvz_应用宝_微信"
                             ]
                         }
                     }

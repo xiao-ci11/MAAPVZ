@@ -21,6 +21,93 @@
             "点击登录"
         ]
     },
+    "打开pvz_九游": {
+        "timeout": 180000,
+        "action": "StartApp",
+        "package": "com.popcap.pvz2cthduc",
+        "post_delay": 16000,
+        "next": [
+            "点击登录",
+            "开始游戏" //九游有时会直接到进入游戏界面，所以这里加了一个开始游戏的分支
+            //就你搞特殊是吧！
+        ]
+    },
+    "打开pvz_OPPO": {
+        "timeout": 180000,
+        "action": "StartApp",
+        "package": "com.popcap.pvz2cthdop",
+        "post_delay": 16000,
+        "next": [
+            "点击登录",
+            "开始游戏"
+        ]
+    },
+    "打开pvz_应用宝_qq": {
+        "timeout": 180000,
+        "action": "StartApp",
+        "package": "com.tencent.tmgp.pvz2hdtxyyb",
+        "post_delay": 16000,
+        "next": [
+            "点击登录_应用宝_qq"
+        ]
+    },
+    "打开pvz_应用宝_微信": {
+        "timeout": 180000,
+        "action": "StartApp",
+        "package": "com.tencent.tmgp.pvz2hdtxyyb",
+        "post_delay": 16000,
+        "next": [
+            "点击登录_应用宝_微信"
+        ]
+    },
+    "打开pvz_b服": {
+        "timeout": 180000,
+        "action": "StartApp",
+        "package": "com.popcap.pvz2cthd.bilibili",
+        "post_delay": 16000,
+        "next": [
+            "点击登录",
+            "开始游戏"
+        ]
+    },
+    "打开pvz_vivo": {
+        "timeout": 180000,
+        "action": "StartApp",
+        "package": "com.popcap.pvz2cthdbbg",
+        "post_delay": 16000,
+        "next": [
+            "点击登录",
+            "开始游戏"
+        ]
+    },
+    "打开pvz_荣耀": {
+        "timeout": 180000,
+        "action": "StartApp",
+        "package": "com.popcap.pvz2cthd.honor",
+        "post_delay": 16000,
+        "next": [
+            "点击登录",
+            "开始游戏"
+        ]
+    },
+    "打开pvz_好游快报": {
+        "timeout": 180000,
+        "action": "StartApp",
+        "package": "com.popcap.pvz2cthdbk",
+        "post_delay": 16000,
+        "next": [
+            "点击登录"
+        ]
+    },
+    "打开pvz_百度": {
+        "timeout": 180000,
+        "action": "StartApp",
+        "package": "com.popcap.pvz2cthd.g.baidu",
+        "post_delay": 16000,
+        "next": [
+            "点击登录"
+        ]
+    },
     "打开pvz_7723": {
         "timeout": 180000,
         "action": "StartApp",
@@ -57,12 +144,95 @@
             "点击登录"
         ]
     },
+    "点击登录_应用宝_微信": {
+        "timeout": 30000,
+        "recognition": "Or",
+        "any_of": [
+            {
+                "recognition": "TemplateMatch",
+                "template": [
+                    "点击登录_应用宝_微信.png"
+                ],
+                "threshold": 0.8
+            },
+            {
+                "recognition": "OCR",
+                "expected": [
+                    "微信登录"
+                ],
+                "threshold": 0.8
+            }
+        ],
+        "pre_wait_freezes": {
+            "time": 2000, // 需要连续2秒画面无变化
+            "threshold": 0.95, // 相似度阈值95%
+            "timeout": 10000, // 最多等待10秒
+            "target": true, // 在识别区域内检测
+            "method": 5 // 匹配算法
+        }, //该函数作为例子写详细
+        "action": "Click",
+        "post_delay": 4000,
+        "next": [
+            "开始游戏",
+            "关闭广告通用",
+            "小米的广告",
+            "小米_下次再说"
+        ]
+    },
+    "点击登录_应用宝_qq": {
+        "timeout": 30000,
+        "recognition": "Or",
+        "any_of": [
+            {
+                "recognition": "TemplateMatch",
+                "template": [
+                    "点击登录_应用宝_qq.png"
+                ],
+                "threshold": 0.8
+            },
+            {
+                "recognition": "OCR",
+                "expected": [
+                    "qq登录"
+                ],
+                "threshold": 0.8
+            }
+        ],
+        "pre_wait_freezes": {
+            "time": 2000, // 需要连续2秒画面无变化
+            "threshold": 0.95, // 相似度阈值95%
+            "timeout": 10000, // 最多等待10秒
+            "target": true, // 在识别区域内检测
+            "method": 5 // 匹配算法
+        }, //该函数作为例子写详细
+        "action": "Click",
+        "post_delay": 4000,
+        "next": [
+            "开始游戏",
+            "关闭广告通用",
+            "小米的广告",
+            "小米_下次再说"
+        ]
+    },
     "点击登录": {
         "timeout": 30000,
-        "recognition": "TemplateMatch",
-        "template": [
-            "登录_4399.png",
-            "登录_XM.png"
+        "recognition": "Or",
+        "any_of": [
+            {
+                "recognition": "TemplateMatch",
+                "template": [
+                    "登录_4399.png",
+                    "登录_XM.png"
+                ],
+                "threshold": 0.8
+            },
+            {
+                "recognition": "OCR",
+                "expected": [
+                    "登录"
+                ],
+                "threshold": 0.8
+            }
         ],
         "pre_wait_freezes": {
             "time": 2000, // 需要连续2秒画面无变化
@@ -82,12 +252,39 @@
     },
     "关闭广告通用": {
         "timeout": 15000,
-        "recognition": "OCR",
-        "expected": [
-            "x",
-            "X"
+        "recognition": "Or",
+        "any_of": [
+            {
+                "roi": [
+                    747,
+                    165,
+                    38,
+                    36
+                ],
+                "expected": "[×，x，X，✕，✖]",
+                "threshold": 0.1
+            },
+            // {
+            //     "roi": [],
+            //     "expected": "[×，x，X，✕，✖]",
+            //     "threshold": 0.1
+            // },
+            // {
+            //     "roi": [],
+            //     "expected": "[×，x，X，✕，✖]",
+            //     "threshold": 0.1
+            // },
+            // {
+            //     "roi": [],
+            //     "expected": "[×，x，X，✕，✖]",
+            //     "threshold": 0.1
+            // },
+            // {
+            //     "roi": [],
+            //     "expected": "[×，x，X，✕，✖]",
+            //     "threshold": 0.1
+            // }
         ],
-        "threshold": 0.8,
         "action": "Click",
         "post_delay": 10000,
         "next": [
