@@ -121,29 +121,121 @@
             1
         ],
         "next": [
-            "双人对决_识别一号位二号位是否满足"
+            "双人对决_识别一号位是否满足"
         ]
     },
-    "双人对决_识别一号位二号位是否满足": {
+    "双人对决_识别一号位是否满足": {
+        "inverse": true,
         "timeout": 1000,
-        "recognition": "And",
-        "all_of": [
-            {
-                "sub_name": "第一个卡槽",
-                "recognition": "TemplateMatch",
-                "template": [
-                    "双人对决_一号位空槽位.png"
-                ],
-                "inverse": true
-            },
-            {
-                "sub_name": "第二个卡槽",
-                "recognition": "TemplateMatch",
-                "template": [
-                    "双人对决_二号位空槽位.png"
-                ],
-                "inverse": true
-            }
+        "recognition": "TemplateMatch",
+        "template": [
+            "双人对决_一号位空槽位.png"
+        ],
+        "roi": [
+            1,
+            51,
+            318,
+            104
+        ],
+        "action": "DoNothing",
+        "threshold": [
+            1
+        ],
+        "next": [
+            "双人对决_识别二号位是否满足"
+        ]
+    },
+    "双人对决_识别二号位是否满足": {
+        "inverse": true,
+        "timeout": 1000,
+        "recognition": "TemplateMatch",
+        "template": [
+            "双人对决_二号位空槽位.png"
+        ],
+        "roi": [
+            5,
+            156,
+            156,
+            79
+        ],
+        "action": "DoNothing",
+        "threshold": [
+            0.8
+        ],
+        "next": [
+            "识别成功，启动！"
+        ]
+    },
+    "识别成功，启动！": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "双人对决_开始匹配.png"
+        ],
+        "action": "Click",
+        "next": [
+            "识别是否进入局内"
+        ]
+    },
+    "识别是否进入局内": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "双人对决_局内.png"
+        ],
+        "action": "DoNothing",
+        "next": [
+            "放置一号位植物1"
+        ]
+    },
+    "放置一号位植物1": {
+        "action": "Click",
+        "target": [
+            82,
+            167
+        ],
+        "next": [
+            "放置一号位植物2"
+        ]
+    },
+    "放置一号位植物2": {
+        "action": "Click",
+        "target": [
+            831,
+            211,
+            3,
+            1
+        ],
+        "next": [
+            "放置二号位植物1"
+        ]
+    },
+    "放置二号位植物1": {
+        "action": "Click",
+        "target": [
+            189,
+            167,
+            1,
+            1
+        ],
+        "next": [
+            "放置二号位植物2"
+        ]
+    },
+    "放置二号位植物2": {
+        "action": "Click",
+        "target": [
+            441,
+            206,
+            4,
+            2
+        ],
+        "next": [
+            "准备卡双赢"
+        ]
+    },
+    "准备卡双赢": {
+        "action": "DoNothing",
+        "next": [
+            "下拉栏第一次"
         ]
     },
     "下拉栏第一次": {
@@ -215,6 +307,10 @@
         "action": "DoNothing",
         "threshold": [
             1
+        ],
+        "next": [
+            "放一号位僵尸"
         ]
-    }
+    },
+    "放一号位僵尸": {}
 }
