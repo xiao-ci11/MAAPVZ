@@ -125,6 +125,9 @@
             "双人对决_植物_甜薯.png"
         ],
         "max_hit": 1,
+        "threshold": [
+            0.9
+        ],
         "action": "Click",
         "next": [
             "双人对决_回到寻找植物最顶上"
@@ -137,6 +140,9 @@
             "双人对决_植物_热辣海枣.png"
         ],
         "max_hit": 1,
+        "threshold": [
+            0.9
+        ],
         "action": "Click",
         "next": [
             "双人对决_回到寻找植物最顶上"
@@ -149,6 +155,9 @@
             "双人对决_植物_金蝉花.png"
         ],
         "max_hit": 1,
+        "threshold": [
+            0.9
+        ],
         "action": "Click",
         "next": [
             "双人对决_回到寻找植物最顶上"
@@ -161,6 +170,9 @@
             "双人对决_植物_仙人掌.png"
         ],
         "max_hit": 1,
+        "threshold": [
+            0.9
+        ],
         "action": "Click",
         "next": [
             "双人对决_寻找二号位植物"
@@ -174,6 +186,9 @@
             "双人对决_植物_激光豆_超皮.png"
         ],
         "max_hit": 1,
+        "threshold": [
+            0.9
+        ],
         "action": "Click",
         "next": [
             "双人对决_寻找二号位植物"
@@ -250,11 +265,12 @@
         ],
         "action": "Click",
         "next": [
-            "识别已找到对手"
+            "识别已找到对手",
+            "突发情况处理"
         ]
     },
     "识别已找到对手": {
-        "timeout": 10000,
+        "timeout": 1000000,
         "rate_limit": 2000,
         "recognition": "TemplateMatch",
         "template": [
@@ -264,6 +280,9 @@
         "focus": "[color:darkgray]开始匹配[/color]",
         "next": [
             "准备卡双赢"
+        ],
+        "on_error": [
+            "突发情况处理"
         ]
     },
     "放置一号位植物1": {
@@ -340,7 +359,7 @@
     },
     "下拉栏第二次": {
         "action": "Swipe",
-        "post_delay": 5000,
+        "post_delay": 3000,
         "begin": [
             665,
             1,
@@ -374,18 +393,18 @@
             1
         ],
         "next": [
-            "识别局内",
+            "识别是否掉血",
             "下拉栏第一次"
         ]
     },
-    "识别局内": {
+    "识别是否掉血": {
         "timeout": 10,
         "recognition": "Or",
         "any_of": [
             {
                 "recognition": "TemplateMatch",
                 "template": [
-                    "双人对决_局内.png",
+                    "双人对决_18血.png",
                     "双人对决_晋升.png",
                     "双人对决_突发情况1.png",
                     "双人对决_失败掉分.png"
@@ -395,9 +414,22 @@
                 ]
             },
             {
-                "recognition": "OCR",
-                "expected": [
-                    "1/20"
+                "recognition": "ColorMatch",
+                "lower": [
+                    247,
+                    221,
+                    94
+                ],
+                "upper": [
+                    247,
+                    221,
+                    94
+                ],
+                "roi": [
+                    534,
+                    367,
+                    169,
+                    27
                 ]
             }
         ],
@@ -605,7 +637,8 @@
         ],
         "action": "Click",
         "next": [
-            "重开"
+            "重开",
+            "[JumpBack]检查突发情况"
         ],
         "focus": "[color:darkgray]芜湖赢了[/color]"
     },
@@ -616,7 +649,8 @@
         ],
         "action": "Click",
         "next": [
-            "重开"
+            "重开",
+            "[JumpBack]检查突发情况"
         ],
         "focus": "[color:darkgray]呜呜输了[/color]"
     },
